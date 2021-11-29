@@ -11,6 +11,7 @@ import subprocess
 def autostart():
     subprocess.call([path.join(path.expanduser('~'),'.config','qtile', 'autostart.sh')])
 
+    
 mod = "mod4"
 terminal = guess_terminal()
 
@@ -89,7 +90,8 @@ keys = [
 
 ]
 
-groups = [Group(i) for i in ["","","歷","ﰪ",""]]
+
+groups = [Group(i) for i in ["","","歷","ﰪ","",".|."]]
 
 for i, group in enumerate(groups):
     actual_key = str(i+1)
@@ -159,13 +161,12 @@ myWidgets =             [
                 widget.Clock(format='  %d/%m/%Y - %H:%M '),
             ]
 screens = [
-
-
     Screen(
         top=bar.Bar(
 myWidgets,
             27,
-            opacity = 0.80
+            opacity = 0.60,
+            margin = 0
         ),
     ),
 
@@ -184,7 +185,7 @@ dgroups_key_binder = None
 dgroups_app_rules = []  # type: List
 follow_mouse_focus = True
 bring_front_click = False
-cursor_warp = False
+cursor_warp = True
 floating_layout = layout.Floating(float_rules=[
     # Run the utility of `xprop` to see the wm class and name of an X client.
     *layout.Floating.default_float_rules,
