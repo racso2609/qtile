@@ -1,8 +1,11 @@
 from libqtile.config import Key
 from libqtile.command import lazy
+from libqtile.utils import guess_terminal
+
 
 mod = "mod4"
 terminal = guess_terminal()
+
 
 keys = [
     # Switch between windows
