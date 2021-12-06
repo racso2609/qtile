@@ -20,7 +20,7 @@ layouts = [
 
 widget_defaults = dict(
     font='Caskaydia Cove Nerd Font',
-    fontsize=12,
+    fontsize=15,
     padding=10,
 )
 extension_defaults = widget_defaults.copy()
@@ -36,7 +36,7 @@ myWidgets =             [
                    this_current_screen_border=["#7745b5"],
                    this_screen_border="#9e999a",
                    disable_drag=False,
-                    fontsize=14,
+                    fontsize=18,
                     margin_x=0,
                     padding_x=14
                 ),
