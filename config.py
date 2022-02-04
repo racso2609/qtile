@@ -36,6 +36,8 @@ from libqtile.command import lazy
 from libqtile.widget import Spacer
 import arcobattery
 
+# from theme import colors  
+
 #mod4 or mod = super key
 mod = "mod4"
 mod1 = "alt"
@@ -168,6 +170,14 @@ keys = [
     Key([mod, "shift"], "Left", lazy.layout.swap_left()),
     Key([mod, "shift"], "Right", lazy.layout.swap_right()),
 
+    # Moving out of range in Columns layout will create new column.
+    Key([mod, "shift"], "Left", lazy.layout.shuffle_left(),desc="Move window to the left"),
+    Key([mod, "shift"], "Right", lazy.layout.shuffle_right(), desc="Move window to the right"),
+    # Key([mod, "shift"], "Down", lazy.layout.shuffle_down(),desc="Move window down"),
+    # Key([mod, "shift"], "Up", lazy.layout.shuffle_up(), desc="Move window up"),
+
+
+
 # TOGGLE FLOATING LAYOUT
     Key([mod, "shift"], "f", lazy.window.toggle_floating()),
     Key([mod], "Return", lazy.spawn(terminal), desc="Launch terminal"),
@@ -219,9 +229,10 @@ for i in groups:
         #Key(["mod1", "shift"], "Tab", lazy.screen.prev_group()),
 
 # MOVE WINDOW TO SELECTED WORKSPACE 1-10 AND STAY ON WORKSPACE
-        #Key([mod, "shift"], i.name, lazy.window.togroup(i.name)),
+        Key([mod, "shift"], i.name, lazy.window.togroup(i.name)),
+
 # MOVE WINDOW TO SELECTED WORKSPACE 1-10 AND FOLLOW MOVED WINDOW TO WORKSPACE
-        Key([mod, "shift"], i.name, lazy.window.togroup(i.name) , lazy.group[i.name].toscreen()),
+        # Key([mod, "shift"], i.name, lazy.window.togroup(i.name) , lazy.group[i.name].toscreen() ),
     ])
 
 
@@ -236,33 +247,32 @@ layout_theme = init_layout_theme()
 
 
 layouts = [
-    layout.MonadTall(margin=8, border_width=2, border_focus="#5e81ac", border_normal="#4c566a"),
-    layout.MonadWide(margin=8, border_width=2, border_focus="#5e81ac", border_normal="#4c566a"),
-    layout.Matrix(**layout_theme),
-    layout.Bsp(**layout_theme),
+    # layout.MonadTall(margin=8, border_width=2, border_focus="#5e81ac", border_normal="#4c566a"),
+    layout.Columns(margin=8, border_width=2, border_focus="#5e81ac", border_normal="#4c566a"),
+    # layout.MonadWide(margin=8, border_width=2, border_focus="#5e81ac", border_normal="#4c566a"),
+    # layout.Matrix(**layout_theme),
+    # layout.Bsp(**layout_theme),
     layout.Floating(**layout_theme),
-    layout.RatioTile(**layout_theme),
+    # layout.RatioTile(**layout_theme),
     layout.Max(**layout_theme)
 ]
 
 # COLORS FOR THE BAR
-#Theme name : ArcoLinux Default
+#Theme name : ArcoLinux Zion
 def init_colors():
-    return [["#2F343F", "#2F343F"], # color 0
-            ["#2F343F", "#2F343F"], # color 1
-            ["#c0c5ce", "#c0c5ce"], # color 2
-            ["#fba922", "#fba922"], # color 3
+    return [["#4a4a46", "#4a4a46"], # color 0
+            ["#4a4a46", "#4a4a46"], # color 1
+            ["#e3bbf1", "#e3bbf1"], # color 2
+            ["#d33682", "#d33682"], # color 3
             ["#3384d0", "#3384d0"], # color 4
-            ["#f3f4f5", "#f3f4f5"], # color 5
-            ["#cd1f3f", "#cd1f3f"], # color 6
+            ["#fdf6e3", "#fdf6e3"], # color 5
+            ["#d42121", "#d42121"], # color 6
             ["#62FF00", "#62FF00"], # color 7
-            ["#6790eb", "#6790eb"], # color 8
-            ["#a9a9a9", "#a9a9a9"]] # color 9
+            ["#9742b5", "#9742b5"], # color 8
+            ["#002b36", "#002b36"]] # color 9
 
 
 colors = init_colors()
-
-
 # WIDGETS FOR THE BAR
 
 def init_widgets_defaults():
