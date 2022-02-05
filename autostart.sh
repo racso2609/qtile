@@ -1,2 +1,0 @@
-cbatticon &
-notify-send "Puticaaaa"
