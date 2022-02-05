@@ -26,15 +26,15 @@
 
 
 import os
-import re
+# import re
 import socket
 import subprocess
-from typing import List  # noqa: F401
+# from typing import List  # noqa: F401
 from libqtile import layout, bar, widget, hook
-from libqtile.config import Click, Drag, Group, Key, Match, Screen, Rule
+from libqtile.config import Drag, Group, Key, Match, Screen
 from libqtile.command import lazy
-from libqtile.widget import Spacer
-import arcobattery
+# from libqtile.widget import Spacer
+# import arcobattery
 
 # from theme import colors  
 
