@@ -43,7 +43,9 @@ mod = "mod4"
 mod1 = "alt"
 mod2 = "control"
 home = os.path.expanduser('~')
-terminal="alacritty"
+#terminal="hyper"
+# terminal="alacritty"
+terminal ="wezterm"
 
 
 @lazy.function
@@ -72,11 +74,11 @@ keys = [
    Key ([], "XF86AudioMute", lazy.spawn(
         "pactl set-sink-mute @DEFAULT_SINK@ toggle"
     )),
-
+      Key([], "XF86MonBrightnessUp", lazy.spawn("brightnessctl set +2%")),
+    Key([], "XF86MonBrightnessDown", lazy.spawn("brightnessctl set 2%-")),
 
 
 # SUPER + FUNCTION KEYS
-
     Key([mod], "f", lazy.window.toggle_fullscreen()),
     Key([mod], "q", lazy.window.kill()),
    
