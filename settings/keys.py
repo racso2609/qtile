@@ -1,11 +1,30 @@
+import os
 from libqtile.config import Key
 from libqtile.command import lazy
-from libqtile.utils import guess_terminal
+
+mod1 = "alt"
+mod2 = "control"
+home = os.path.expanduser('~')
+
+
+@lazy.function
+def window_to_prev_group(qtile):
+    if qtile.currentWindow is not None:
+        i = qtile.groups.index(qtile.currentGroup)
+        qtile.currentWindow.togroup(qtile.groups[i - 1].name)
+
+
+@lazy.function
+def window_to_next_group(qtile):
+    if qtile.currentWindow is not None:
+        i = qtile.groups.index(qtile.currentGroup)
+        qtile.currentWindow.togroup(qtile.groups[i + 1].name)
+
 
 
 mod = "mod4"
-terminal = guess_terminal()
-
+# terminal = guess_terminal()
+terminal = "wezterm"
 
 
 keys = [
@@ -134,3 +153,4 @@ keys = [
    Key ([mod], "r", lazy.spawn("rofi-theme-selector"),desc="firefox"),
    Key ([mod], "x", lazy.spawn("arcolinux-logout"),desc="firefox"),
 ]
+
