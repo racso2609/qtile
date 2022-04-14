@@ -40,6 +40,14 @@ keys = [
    Key ([], "XF86AudioMute", lazy.spawn(
         "pactl set-sink-mute @DEFAULT_SINK@ toggle"
     )),
+# Brightness
+   Key ([], "XF86MonBrightnessUp", lazy.spawn(
+     "brightnessctl s +15"
+)),
+
+   Key ([], "XF86MonBrightnessDown", lazy.spawn(
+     "brightnessctl s 15-"
+)),
 
 # SUPER + FUNCTION KEYS
     Key([mod], "f", lazy.window.toggle_fullscreen()),
