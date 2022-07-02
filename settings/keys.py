@@ -153,12 +153,14 @@ keys = [
     Key([mod], "Return", lazy.spawn(terminal), desc="Launch terminal"),
     # Menu
    Key ([mod], "space", lazy.spawn("rofi -show drun")),
-   Key ([mod], "n", lazy.spawn("thunar"),desc="files"),
+   Key ([mod], "n", lazy.spawn("nemo"),desc="files"),
 
    Key ([mod,'shift'], "b", lazy.spawn("qutebrowser"),desc="browser"),
    Key ([mod], "b", lazy.spawn("google-chrome-stable"),desc="firefox"),
    Key ([mod], "s", lazy.spawn("flameshot gui"),desc="firefox"),
    Key ([mod], "r", lazy.spawn("rofi-theme-selector"),desc="firefox"),
    Key ([mod], "x", lazy.spawn("arcolinux-logout"),desc="firefox"),
+   Key ([mod],"a", lazy.spawn('dunstctl close'),desc='close last dunst notification'),
+   Key ([mod, "shift"],"a", lazy.spawn('dunstctl close-all'),desc='close last dunst notification'),
 ]
 
