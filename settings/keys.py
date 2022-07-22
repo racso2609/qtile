@@ -40,6 +40,28 @@ keys = [
    Key ([], "XF86AudioMute", lazy.spawn(
         "pactl set-sink-mute @DEFAULT_SINK@ toggle"
     )),
+
+    Key ([mod], "F1", lazy.spawn(
+
+        "pactl set-sink-volume @DEFAULT_SINK@ -5%"
+    )),
+    Key ([mod], "F3", lazy.spawn(
+        "pactl set-sink-volume @DEFAULT_SINK@ +5%"
+    )),
+   Key ([mod], "F2", lazy.spawn(
+        "pactl set-sink-mute @DEFAULT_SINK@ toggle"
+    )),
+
+    Key ([mod,"shift"], "F1", lazy.spawn(
+
+        "playerctl previous"
+    )),
+    Key ([mod,'shift'], "F2", lazy.spawn(
+        "playerctl play-pause"
+    )),
+   Key ([mod,'shift'], "F3", lazy.spawn(
+        "playerctl next"
+    )),
 # Brightness
    Key ([], "XF86MonBrightnessUp", lazy.spawn(
      "brightnessctl s +15"
@@ -48,6 +70,15 @@ keys = [
    Key ([], "XF86MonBrightnessDown", lazy.spawn(
      "brightnessctl s 15-"
 )),
+   Key (['control'], "F1", lazy.spawn(
+     "brightnessctl s +15"
+)),
+
+   Key (['control'], "F2", lazy.spawn(
+     "brightnessctl s 15-"
+)),
+
+
 
 # SUPER + FUNCTION KEYS
     Key([mod], "f", lazy.window.toggle_fullscreen()),
@@ -162,5 +193,8 @@ keys = [
    Key ([mod], "x", lazy.spawn("arcolinux-logout"),desc="firefox"),
    Key ([mod],"a", lazy.spawn('dunstctl close'),desc='close last dunst notification'),
    Key ([mod, "shift"],"a", lazy.spawn('dunstctl close-all'),desc='close last dunst notification'),
+   #Languages
+   Key ([mod,'shift'],'e', lazy.spawn('setxkbmap es')),
+   Key ([mod,'shift'],'u', lazy.spawn('setxkbmap us')),
 ]
 
