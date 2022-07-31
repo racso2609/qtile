@@ -1,6 +1,6 @@
-from libqtile.config import Screen
-from libqtile import bar
-from settings.layouts import widgets_screen1, widgets_screen2
+# from libqtile.config import Screen
+# from libqtile import bar
+# from settings.layouts import widgets_screen1, widgets_screen2
 
 
 def init_screens():
