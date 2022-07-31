@@ -1,9 +1,8 @@
-import os
-import re
-import socket
-from typing import List  # noqa: F401
+# import os
+# import re
+# import socket
+# from typing import List  # noqa: F401
 from libqtile import layout, widget
-
 from libqtile.config import Match
 
 font = "Caskaydia Cove Nerd Font"
