@@ -70,11 +70,11 @@ keys = [
    Key ([], "XF86MonBrightnessDown", lazy.spawn(
      "brightnessctl s 15-"
 )),
-   Key (['control'], "F1", lazy.spawn(
+   Key (['control'], "F2", lazy.spawn(
      "brightnessctl s +15"
 )),
 
-   Key (['control'], "F2", lazy.spawn(
+   Key (['control'], "F1", lazy.spawn(
      "brightnessctl s 15-"
 )),
 

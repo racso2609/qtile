@@ -31,7 +31,7 @@ function run {
 
 #start sxhkd to replace Qtile native key-bindings
 #run sxhkd -c ~/.config/qtile/sxhkd/sxhkdrc &
-eww open bar &
+# eww open bar &
 
 
 #starting utility applications at boot time
@@ -45,7 +45,7 @@ compton &
 # picom --config $HOME/.config/qtile/scripts/picom.conf &
 #/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 #/usr/lib/xfce4/notifyd/xfce4-notifyd &
-notify-send hola
+# notify-send hola
 
 #starting user applications at boot time
 # run volumeicon &

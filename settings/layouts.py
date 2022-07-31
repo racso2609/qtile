@@ -1,7 +1,7 @@
 import os
-# import re
+import re
 import socket
-# from typing import List  # noqa: F401
+from typing import List  # noqa: F401
 from libqtile import layout, widget
 
 from libqtile.config import Match
@@ -22,10 +22,12 @@ layout_theme = init_layout_theme()
 
 layouts = [
     # layout.MonadTall(margin=8, border_width=2, border_focus="#5e81ac", border_normal="#4c566a"),
-    layout.Columns(margin=8,
-                   border_width=2,
-                   border_focus="#5e81ac",
-                   border_normal="#4c566a"),
+    layout.Columns(
+        margin=8,
+        border_width=2,
+        border_focus="#5e81ac",
+        border_normal="#4c566a"
+    ),
     # layout.MonadWide(margin=8, border_width=2, border_focus="#5e81ac", border_normal="#4c566a"),
     # layout.Matrix(**layout_theme),
     # layout.Bsp(**layout_theme),
@@ -48,8 +50,8 @@ def init_colors():
         ["#d42121", "#d42121"],  # color 6
         ["#62FF00", "#62FF00"],  # color 7
         ["#9742b5", "#9742b5"],  # color 8
-        ["#002b36", "#002b36"]
-    ]  # color 9
+        ["#002b36", "#002b36"]   # color 9
+        ] 
 
 
 colors = init_colors()
@@ -64,7 +66,7 @@ widget_defaults = init_widgets_defaults()
 
 
 def init_widgets_list():
-    prompt = "{0}@{1}: ".format(os.environ["USER"], socket.gethostname())
+    # prompt = "{0}@{1}: ".format(os.environ["USER"], socket.gethostname())
     widgets_list = [
         widget.GroupBox(font="FontAwesome",
                         fontsize=16,
@@ -98,6 +100,28 @@ def init_widgets_list():
             foreground=colors[5],
             background=colors[1],
         ),
+        widget.Battery(
+            font="Noto Sans",
+            update_interval=10,
+            fontsize=12,
+            foreground=colors[5],
+            background=colors[1],
+        ),
+        widget.TextBox(
+            font="FontAwesome",
+            text="  ",
+            foreground=colors[3],
+            background=colors[1],
+            padding=0,
+            fontsize=16
+        ),
+        widget.Clock(
+            foreground=colors[5],
+            background=colors[1],
+            fontsize=12,
+            format="%Y-%m-%d %H:%M"
+        ),
+        widget.Systray(background=colors[1], icon_size=20, padding=4),
         # widget.Net(
         #          font="Noto Sans",
         #          fontsize=12,
@@ -163,13 +187,7 @@ def init_widgets_list():
         #          foreground = colors[2],
         #          background = colors[1]
         #          ),
-        widget.Battery(
-            font="Noto Sans",
-            update_interval=10,
-            fontsize=12,
-            foreground=colors[5],
-            background=colors[1],
-        ),
+       
         # widget.TextBox(
         # font="FontAwesome",
         #          text="  ",
@@ -216,23 +234,13 @@ def init_widgets_list():
         #          foreground = colors[2],
         #          background = colors[1]
         #          ),
-        widget.TextBox(font="FontAwesome",
-                       text="  ",
-                       foreground=colors[3],
-                       background=colors[1],
-                       padding=0,
-                       fontsize=16),
-        widget.Clock(foreground=colors[5],
-                     background=colors[1],
-                     fontsize=12,
-                     format="%Y-%m-%d %H:%M"),
+        
         # widget.Sep(
         #          linewidth = 1,
         #          padding = 10,
         #          foreground = colors[2],
         #          background = colors[1]
         #          ),
-        widget.Systray(background=colors[1], icon_size=20, padding=4),
     ]
     return widgets_list
 
