@@ -31,7 +31,7 @@ function run {
 
 #start sxhkd to replace Qtile native key-bindings
 #run sxhkd -c ~/.config/qtile/sxhkd/sxhkdrc &
-# eww open bar &
+eww open bar &
 
 
 #starting utility applications at boot time
