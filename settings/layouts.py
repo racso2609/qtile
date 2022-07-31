@@ -6,6 +6,8 @@ from libqtile import layout, widget
 
 from libqtile.config import Match
 
+font = "Caskaydia Cove Nerd Font"
+icon_size=12
 
 
 
@@ -59,7 +61,7 @@ colors = init_colors()
 
 
 def init_widgets_defaults():
-    return dict(font="Noto Sans", fontsize=12, padding=2, background=colors[1])
+    return dict(font=font, fontsize=12, padding=2, background=colors[1])
 
 
 widget_defaults = init_widgets_defaults()
@@ -68,8 +70,8 @@ widget_defaults = init_widgets_defaults()
 def init_widgets_list():
     # prompt = "{0}@{1}: ".format(os.environ["USER"], socket.gethostname())
     widgets_list = [
-        widget.GroupBox(font="FontAwesome",
-                        fontsize=16,
+        widget.GroupBox(font=font,
+                        fontsize=icon_size,
                         margin_y=-1,
                         margin_x=0,
                         padding_y=6,
@@ -87,7 +89,7 @@ def init_widgets_list():
                    padding=10,
                    foreground=colors[2],
                    background=colors[1]),
-        widget.CurrentLayout(font="Noto Sans Bold",
+        widget.CurrentLayout(font=font,
                              foreground=colors[5],
                              background=colors[1]),
         widget.Sep(linewidth=1,
@@ -95,33 +97,65 @@ def init_widgets_list():
                    foreground=colors[2],
                    background=colors[1]),
         widget.WindowName(
-            font="Noto Sans",
-            fontsize=12,
+            font=font,
+            fontsize=icon_size,
             foreground=colors[5],
             background=colors[1],
         ),
+        widget.PulseVolume(
+            foreground=colors[5],
+            background=colors[1],
+            fontsize=icon_size,
+            ),
+         widget.Sep(
+            linewidth = 1,
+            padding = 10,
+            foreground = colors[2],
+            background = colors[1]
+        ),
+ 
+        widget.Bluetooth(
+            foreground=colors[5],
+            background=colors[1],
+            fontsize=icon_size,
+            ),
+ 
+        widget.Sep(
+            linewidth = 1,
+            padding = 10,
+            foreground = colors[2],
+            background = colors[1]
+        ),
+ 
         widget.Battery(
-            font="Noto Sans",
+            font=font,
             update_interval=10,
-            fontsize=12,
+            fontsize=icon_size,
             foreground=colors[5],
             background=colors[1],
         ),
-        widget.TextBox(
-            font="FontAwesome",
-            text="  ",
-            foreground=colors[3],
-            background=colors[1],
-            padding=0,
-            fontsize=16
+     
+        widget.Sep(
+            linewidth = 1,
+            padding = 10,
+            foreground = colors[2],
+            background = colors[1]
         ),
+
         widget.Clock(
             foreground=colors[5],
             background=colors[1],
-            fontsize=12,
-            format="%Y-%m-%d %H:%M"
+            fontsize=icon_size,
+            # format="%Y-%m-%d %H:%M"
         ),
-        widget.Systray(background=colors[1], icon_size=20, padding=4),
+        widget.Sep(
+            linewidth = 1,
+            padding = 10,
+            foreground = colors[2],
+            background = colors[1]
+        ),
+ 
+        widget.Systray(background=colors[1], icon_size=icon_size, padding=4),
         # widget.Net(
         #          font="Noto Sans",
         #          fontsize=12,
