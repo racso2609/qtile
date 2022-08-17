@@ -61,3 +61,11 @@ compton &
 #run atom &
 #run telegram-desktop &
 run udiskie &
+
+TRASH_FOLDER="$HOME/.local/share/Trash"
+if [[ ! -f $TRASH_FOLDER ]];then
+  rm $TRASH_FOLDER
+  notify-send "Trash folder deleted"
+
+fi
+
