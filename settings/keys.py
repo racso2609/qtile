@@ -24,6 +24,7 @@ def window_to_next_group(qtile):
 mod = "mod4"
 # terminal = guess_terminal()
 terminal = "wezterm"
+file_explorer = 'thunar'
 
 
 keys = [
@@ -167,7 +168,7 @@ keys = [
     Key([mod], "Return", lazy.spawn(terminal), desc="Launch terminal"),
     # Menu
     Key([mod], "space", lazy.spawn("rofi -show drun")),
-    Key([mod], "n", lazy.spawn("nemo"), desc="files"),
+    Key([mod], "n", lazy.spawn(file_explorer), desc="files"),
     Key([mod, "shift"], "b", lazy.spawn("qutebrowser"), desc="browser"),
     Key([mod], "b", lazy.spawn("google-chrome-stable"), desc="firefox"),
     Key([mod], "s", lazy.spawn("flameshot gui"), desc="firefox"),
