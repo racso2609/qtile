@@ -25,7 +25,7 @@ mod = "mod4"
 # terminal = guess_terminal()
 terminal = "wezterm"
 file_explorer = 'thunar'
-
+explorer = 'brave'
 
 keys = [
     # Most of our keybindings are in sxhkd file - except these
@@ -170,7 +170,7 @@ keys = [
     Key([mod], "space", lazy.spawn("rofi -show drun")),
     Key([mod], "n", lazy.spawn(file_explorer), desc="files"),
     Key([mod, "shift"], "b", lazy.spawn("qutebrowser"), desc="browser"),
-    Key([mod], "b", lazy.spawn("google-chrome-stable"), desc="firefox"),
+    Key([mod], "b", lazy.spawn(explorer), desc="firefox"),
     Key([mod], "s", lazy.spawn("flameshot gui"), desc="firefox"),
     Key([mod], "r", lazy.spawn("rofi-theme-selector"), desc="firefox"),
     Key([mod], "x", lazy.spawn("arcolinux-logout"), desc="firefox"),
