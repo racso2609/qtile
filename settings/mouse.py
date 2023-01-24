@@ -1,4 +1,4 @@
-from libqtile.config import Drag 
+from libqtile.config import Drag
 from libqtile.lazy import lazy
 from settings.keys import mod
 
@@ -13,4 +13,3 @@ mouse = [
          lazy.window.set_size_floating(),
          start=lazy.window.get_size())
 ]
-

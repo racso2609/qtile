@@ -6,8 +6,7 @@ from libqtile import layout, widget
 from libqtile.config import Match
 
 font = "Caskaydia Cove Nerd Font"
-icon_size=12
-
+icon_size = 12
 
 
 def init_layout_theme():
@@ -39,7 +38,7 @@ layouts = [
 
 
 # COLORS FOR THE BAR
-#Theme name : ArcoLinux Zion
+# Theme name : ArcoLinux Zion
 def init_colors():
     return [
         ["#4a4a46", "#4a4a46"],  # color 0
@@ -52,7 +51,7 @@ def init_colors():
         ["#62FF00", "#62FF00"],  # color 7
         ["#9742b5", "#9742b5"],  # color 8
         ["#002b36", "#002b36"]   # color 9
-        ] 
+    ]
 
 
 colors = init_colors()
@@ -105,27 +104,27 @@ def init_widgets_list():
             foreground=colors[5],
             background=colors[1],
             fontsize=icon_size,
-            ),
-         widget.Sep(
-            linewidth = 1,
-            padding = 10,
-            foreground = colors[2],
-            background = colors[1]
         ),
- 
+        widget.Sep(
+            linewidth=1,
+            padding=10,
+            foreground=colors[2],
+            background=colors[1]
+        ),
+
         widget.Bluetooth(
             foreground=colors[5],
             background=colors[1],
             fontsize=icon_size,
-            ),
- 
-        widget.Sep(
-            linewidth = 1,
-            padding = 10,
-            foreground = colors[2],
-            background = colors[1]
         ),
- 
+
+        widget.Sep(
+            linewidth=1,
+            padding=10,
+            foreground=colors[2],
+            background=colors[1]
+        ),
+
         widget.Battery(
             font=font,
             update_interval=10,
@@ -133,12 +132,12 @@ def init_widgets_list():
             foreground=colors[5],
             background=colors[1],
         ),
-     
+
         widget.Sep(
-            linewidth = 1,
-            padding = 10,
-            foreground = colors[2],
-            background = colors[1]
+            linewidth=1,
+            padding=10,
+            foreground=colors[2],
+            background=colors[1]
         ),
 
         widget.Clock(
@@ -148,12 +147,12 @@ def init_widgets_list():
             # format="%Y-%m-%d %H:%M"
         ),
         widget.Sep(
-            linewidth = 1,
-            padding = 10,
-            foreground = colors[2],
-            background = colors[1]
+            linewidth=1,
+            padding=10,
+            foreground=colors[2],
+            background=colors[1]
         ),
- 
+
         widget.Systray(background=colors[1], icon_size=icon_size, padding=4),
         # widget.Net(
         #          font="Noto Sans",
@@ -220,7 +219,7 @@ def init_widgets_list():
         #          foreground = colors[2],
         #          background = colors[1]
         #          ),
-       
+
         # widget.TextBox(
         # font="FontAwesome",
         #          text="  ",
@@ -267,7 +266,7 @@ def init_widgets_list():
         #          foreground = colors[2],
         #          background = colors[1]
         #          ),
-        
+
         # widget.Sep(
         #          linewidth = 1,
         #          padding = 10,
@@ -324,8 +323,3 @@ floating_layout = layout.Floating(
     ],
     fullscreen_border_width=0,
     border_width=0)
-
-
-
-
-

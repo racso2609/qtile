@@ -28,6 +28,18 @@ file_explorer = 'thunar'
 explorer = 'brave'
 
 keys = [
+    # notification control
+    Key(
+        ["control"],
+        "space",
+        lazy.spawn("dunstctl close"),
+    ),
+    Key(
+        ["control", "shift"],
+        "space",
+        lazy.spawn("dunstctl close-all"),
+    ),
+
     # Most of our keybindings are in sxhkd file - except these
     # Volume
     Key(
