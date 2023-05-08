@@ -27,6 +27,7 @@ terminal = "wezterm"
 file_explorer = 'thunar'
 explorer = 'brave'
 
+# TODO: make it more beautifull
 keys = [
     # notification control
     Key(

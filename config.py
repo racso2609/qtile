@@ -34,7 +34,6 @@ from settings.keys import *
 from settings.groups import *
 from settings.layouts import *
 from settings.mouse import *
-from settings.screen import *
 
 
 # from libqtile.widget import Spacer
@@ -125,3 +124,4 @@ auto_fullscreen = True
 focus_on_window_activation = "focus"  # or smart
 
 wmname = "LG3D"
+screens = []
