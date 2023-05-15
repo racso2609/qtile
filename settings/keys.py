@@ -24,8 +24,8 @@ def window_to_next_group(qtile):
 mod = "mod4"
 # terminal = guess_terminal()
 terminal = "wezterm"
-file_explorer = 'thunar'
-explorer = 'brave'
+file_explorer = "thunar"
+explorer = "brave"
 
 # TODO: make it more beautifull
 keys = [
@@ -40,7 +40,6 @@ keys = [
         "space",
         lazy.spawn("dunstctl close-all"),
     ),
-
     # Most of our keybindings are in sxhkd file - except these
     # Volume
     Key(

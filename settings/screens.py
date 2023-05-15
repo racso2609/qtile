@@ -97,7 +97,7 @@ screens = [
                 # ),
                 #
                 # Battery
-                # TODO: create a function to get baterry icon in base batery
+                # TODO: create a function to get baterry icon in base battery
                 widget.TextBox(
                     fmt="  ",
                     foreground=get_color("Magenta"),
