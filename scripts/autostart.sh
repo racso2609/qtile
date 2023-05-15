@@ -21,8 +21,8 @@ run nm-applet &
 run xfce4-power-manager &
 # numlockx on &
 
-# compton &
-compton  --config $HOME/.config/qtile/scripts/picom.conf &
+compton &
+# compton  --config $HOME/.config/qtile/scripts/picom.conf &
 # picom --config $HOME/.config/qtile/scripts/picom.conf &
 
 # starting user applications at boot time

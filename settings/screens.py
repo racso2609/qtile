@@ -1,7 +1,7 @@
 from libqtile.config import Screen
 from libqtile import bar, widget, qtile
 from settings.theme import get_color
-from settings.utils import eww_open
+from settings.utils import eww_open, battery_icon
 
 font = "Caskaydia Cove Nerd Font"
 
@@ -97,11 +97,13 @@ screens = [
                 # ),
                 #
                 # Battery
-                # TODO: create a function to get baterry icon in base batery
-                widget.TextBox(
-                    fmt="  ",
+                # TODO: create a function to get baterry icon in base battery
+                widget.Battery(
+                    fmt="{}",
+                    font=font,
                     foreground=get_color("Magenta"),
-                    fontsize=30,
+                    format=battery_icon(),
+                    fontsize=13,
                 ),
                 widget.Spacer(length=-5),
                 widget.Battery(
