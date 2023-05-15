@@ -7,7 +7,7 @@ font = "Caskaydia Cove Nerd Font"
 
 
 def power():
-    eww_open("power_menu")
+    eww_open("power_overlay")
 
 
 def net_menu():
