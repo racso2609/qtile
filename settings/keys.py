@@ -198,4 +198,3 @@ keys = [
     Key([mod, "shift"], "e", lazy.spawn("setxkbmap es")),
     Key([mod, "shift"], "u", lazy.spawn("setxkbmap us")),
 ]
-

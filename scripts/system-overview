@@ -117,7 +117,7 @@ ${color1}Host:${alignr}${color2}${nodename}${color}
 
 ${color1}${goto 60}Used${alignr}Size${color}
 ${color1}Root${goto 60}${color2}${fs_used /}${alignr}${fs_size /}${color}
-#${color1}Home${goto 60}${color2}${fs_used /home}${alignr}${fs_size /home}${color}
+${color1}Home${goto 60}${color2}${fs_used /home}${alignr}${fs_size /home}${color}
 
 ${color1}${goto 60}Mem${alignr}Max${color}
 ${color1}RAM${goto 60}${color2}${mem}${alignr}${memmax}${color}
