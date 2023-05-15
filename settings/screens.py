@@ -97,12 +97,13 @@ screens = [
                 # ),
                 #
                 # Battery
-                widget.Battery(
+                widget.GenPollText(
                     fmt="{}",
                     font=font,
                     foreground=get_color("Magenta"),
-                    format=battery_icon(),
+                    func=battery_icon,
                     fontsize=13,
+                    update_interval=10,
                 ),
                 widget.Spacer(length=-5),
                 widget.Battery(
