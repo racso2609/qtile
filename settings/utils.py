@@ -25,7 +25,7 @@ def battery_icon():
 
     if charge > 80:
         icon += "  "
-    if charge > 70:
+    elif charge > 70:
         icon += "  "
     elif charge > 50:
         icon += "  "

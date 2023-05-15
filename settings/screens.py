@@ -97,7 +97,6 @@ screens = [
                 # ),
                 #
                 # Battery
-                # TODO: create a function to get baterry icon in base battery
                 widget.Battery(
                     fmt="{}",
                     font=font,
