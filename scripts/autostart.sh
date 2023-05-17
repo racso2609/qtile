@@ -13,13 +13,8 @@ function run {
 # start the conky to learn the shortcuts
 (conky -c $HOME/.config/qtile/scripts/system-overview) &
 
-# start sxhkd to replace Qtile native key-bindings
-# run sxhkd -c ~/.config/qtile/sxhkd/sxhkdrc &
-
 # starting utility applications at boot time
-run nm-applet &
-run xfce4-power-manager &
-# numlockx on &
+nm-applet&
 
 compton &
 # compton  --config $HOME/.config/qtile/scripts/picom.conf &
@@ -31,7 +26,16 @@ compton &
 # run caffeine -a &
 udiskie &
 telegram-desktop &
-# insync start &
+insync start &
+
+USERNAME=`whoami`
+notify-send "Welcome $USERNAME"
+
+# set keyboard language
+setxkbmap us
+numlockx on &
+
+autorandr -c
 
 TRASH_FOLDER="$HOME/.local/share/Trash"
 if [[ ! -f $TRASH_FOLDER ]];then

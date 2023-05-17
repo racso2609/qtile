@@ -10,10 +10,6 @@ def power():
     eww_open("power_overlay")
 
 
-def net_menu():
-    eww_open("net_menu")
-
-
 def search():
     qtile.cmd_spawn("rofi -show drun")
 
@@ -87,14 +83,13 @@ screens = [
                     background="#282738",
                     fontsize=2,
                 ),
-                # widget.Net(
-                #     format=" {up}   {down} ",
-                #     background=get_color("DarkGreen"),
-                #     foreground=get_color("Gray"),
-                #     font=font,
-                #     prefix="k",
-                #     mouse_callbacks={"Button1": net_menu},
-                # ),
+                widget.Net(
+                    format=" {up}   {down} ",
+                    background=get_color("DarkGreen"),
+                    foreground=get_color("Gray"),
+                    font=font,
+                    prefix="k",
+                ),
                 #
                 # Battery
                 widget.GenPollText(
