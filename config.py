@@ -60,7 +60,7 @@ def assign_app_group(client):
         "telegramDesktop",
         "discord",
     ]
-    d[group_names[2]] = ["telegram", "slack"]
+    d[group_names[2]] = ["telegram-desktop", "slack", "Slack"]
     d[group_names[3]] = [
         "Vlc",
         "vlc",
@@ -112,8 +112,8 @@ main = None
 
 @hook.subscribe.startup_once
 def start_once():
-    home = os.path.expanduser("~")
-    subprocess.call([home + "/.config/qtile/scripts/autostart.sh"])
+    home = os.path.expanduser("~/.config/qtile/scripts/autostart.sh")
+    subprocess.call([home])
 
 
 @hook.subscribe.startup
