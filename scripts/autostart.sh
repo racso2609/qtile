@@ -16,7 +16,7 @@
  # starting utility applications at boot time
  nm-applet&
 
- # picom&
+ picom&
  # compton  --config $HOME/.config/qtile/scripts/picom.conf &
  # picom --config $HOME/.config/qtile/scripts/picom.conf &
 

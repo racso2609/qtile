@@ -110,6 +110,7 @@ def assign_app_group(client):
 main = None
 
 
+floating_types = ["notification", "toolbar", "splash", "dialog"]
 @hook.subscribe.startup_once
 def start_once():
     home = os.path.expanduser("~/.config/qtile/scripts/autostart.sh")
@@ -131,7 +132,6 @@ def set_floating(window):
         window.floating = True
 
 
-floating_types = ["notification", "toolbar", "splash", "dialog"]
 
 
 follow_mouse_focus = False
