@@ -1,47 +1,48 @@
 #!/bin/bash
 
- function run {
-   if ! pgrep $1 ;
-   then
-     $@&
-   fi
- }
+function run {
+  if ! pgrep $1 ;
+  then
+    $@&
+  fi
+}
 
- # change your keyboard if you need it
+# change your keyboard if you need it
 
- # Some ways to set your wallpaper besides variety or nitrogen
- # start the conky to learn the shortcuts
- (conky -c $HOME/.config/qtile/scripts/system-overview)&
+# Some ways to set your wallpaper besides variety or nitrogen
+# start the conky to learn the shortcuts
+(conky -c $HOME/.config/qtile/scripts/system-overview)&
 
- # starting utility applications at boot time
- nm-applet&
+# starting utility applications at boot time
+nm-applet&
+xfce4-clipman&
 
- picom&
- # compton  --config $HOME/.config/qtile/scripts/picom.conf &
- # picom --config $HOME/.config/qtile/scripts/picom.conf &
+picom&
+# compton  --config $HOME/.config/qtile/scripts/picom.conf &
+# picom --config $HOME/.config/qtile/scripts/picom.conf &
 
- # starting user applications at boot time
- # think about nitrogen
- # nitrogen --restore &
- # run caffeine -a &
- udiskie&
- telegram-desktop&
+# starting user applications at boot time
+# think about nitrogen
+# nitrogen --restore &
+# run caffeine -a &
+udiskie&
+telegram-desktop&
 
- USERNAME=`whoami`
- notify-send "Welcome $USERNAME"
+USERNAME=`whoami`
+notify-send "Welcome $USERNAME"
 
- # set keyboard language
- setxkbmap us
- numlockx on
+# set keyboard language
+setxkbmap us
+numlockx on
 
- autorandr -c
+autorandr -c
 
- TRASH_FOLDER="$HOME/.local/share/Trash"
- CACHE_FOLDER="$HOME/.cache"
- if [[ ! -f $TRASH_FOLDER ]];then
-   rm -r -f  $TRASH_FOLDER
-   notify-send "Trash folder deleted"
-   rm -rf $CACHE_FOLDER
-   notify-send "Cache folder deleted"
+TRASH_FOLDER="$HOME/.local/share/Trash"
+CACHE_FOLDER="$HOME/.cache"
+if [[ ! -f $TRASH_FOLDER ]];then
+  rm -r -f  $TRASH_FOLDER
+  notify-send "Trash folder deleted"
+  rm -rf $CACHE_FOLDER
+  notify-send "Cache folder deleted"
 
- fi
+fi

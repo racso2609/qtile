@@ -49,19 +49,20 @@ def assign_app_group(client):
         "Brackets",
         "Code-oss",
         "Code",
-        "TelegramDesktop",
-        "Discord",
         "atom",
         "subl",
         "geany",
         "brackets",
         "code-oss",
         "code",
-        "telegramDesktop",
-        "discord",
     ]
-    d[group_names[2]] = ["telegram-desktop", "slack", "Slack"]
+    d[group_names[2]] = []
     d[group_names[3]] = [
+        "telegram-desktop",
+        "slack",
+        "Slack",
+    ]
+    d[group_names[4]] = [
         "Vlc",
         "vlc",
         "Mpv",
@@ -81,7 +82,7 @@ def assign_app_group(client):
         "pcmanfm",
         "pcmanfm-qt",
     ]
-    d[group_names[4]] = [
+    d[group_names[5]] = [
         "Spotify",
         "Pragha",
         "Clementine",
@@ -111,6 +112,8 @@ main = None
 
 
 floating_types = ["notification", "toolbar", "splash", "dialog"]
+
+
 @hook.subscribe.startup_once
 def start_once():
     home = os.path.expanduser("~/.config/qtile/scripts/autostart.sh")
@@ -130,8 +133,6 @@ def set_floating(window):
         or window.window.get_wm_type() in floating_types
     ):
         window.floating = True
-
-
 
 
 follow_mouse_focus = False
