@@ -8,6 +8,7 @@ font = "Caskaydia Cove Nerd Font"
 
 def power():
     eww_open("power_overlay")
+    eww_open("power_menu")
 
 
 def search():
@@ -79,9 +80,18 @@ screens = [
                     empty_group_string="Desktop",
                     fontsize=13,
                 ),
-                widget.Systray(
+                widget.Spacer(
+                    length=6,
                     background="#282738",
-                    fontsize=2,
+                ),
+                widget.Systray(background="#282738", fontsize=2, padding=6),
+                widget.Spacer(
+                    length=6,
+                    background="#282738",
+                ),
+                widget.Spacer(
+                    length=6,
+                    background=get_color("DarkGreen"),
                 ),
                 widget.Net(
                     format=" {up}   {down} ",
@@ -89,6 +99,10 @@ screens = [
                     foreground=get_color("Gray"),
                     font=font,
                     prefix="k",
+                ),
+                widget.Spacer(
+                    length=6,
+                    background=get_color("DarkGreen"),
                 ),
                 #
                 # Battery
@@ -112,7 +126,7 @@ screens = [
                 ),
                 # memory
                 widget.Memory(
-                    format="﬙{MemUsed: .0f}{mm}",
+                    format="\uf0c7{MemUsed: .0f}{mm}",
                     font=font,
                     fontsize=13,
                     padding=10,
@@ -129,7 +143,7 @@ screens = [
                     foreground=get_color("DarkYellow"),
                     fontsize=13,
                     emoji=True,
-                    margin=3,
+                    margin=2,
                 ),
                 widget.Volume(
                     margin=3,

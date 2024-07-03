@@ -1,6 +1,6 @@
 import os
 from libqtile.config import Key
-from libqtile.command import lazy
+from libqtile.lazy import lazy
 
 MOD1 = "alt"
 MOD2 = "control"
@@ -23,8 +23,8 @@ def window_to_next_group(qtile):
 
 MOD = "mod4"
 # TERMINAL = guess_terminal()
-# TERMINAL = "wezterm"
-TERMINAL = "alacritty"
+TERMINAL = "wezterm"
+# TERMINAL = "alacritty"
 FILE_EXPLORER = "nautilus"
 # EXPLORER = "firefox"
 EXPLORER = "brave"

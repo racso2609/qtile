@@ -6,7 +6,7 @@ def eww_open(barName):
 
 
 def battery_info(info):
-    batery_info_path = "/sys/class/power_supply/BAT0/"
+    batery_info_path = "/sys/class/power_supply/BAT1/"
 
     output = subprocess.check_output(["cat", batery_info_path + info])
 
