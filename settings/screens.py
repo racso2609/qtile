@@ -99,6 +99,7 @@ screens = [
                     foreground=get_color("Gray"),
                     font=font,
                     prefix="k",
+                    scroll_fixed_width=True,
                 ),
                 widget.Spacer(
                     length=6,
