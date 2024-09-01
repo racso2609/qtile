@@ -31,6 +31,11 @@ EXPLORER = "brave"
 
 # TODO: make it more beautifull
 keys = [
+    Key(
+        ["mod1"],
+        "Tab",
+        lazy.spawn("rofi -show window"),
+    ),
     # notification control
     Key(
         ["control"],
