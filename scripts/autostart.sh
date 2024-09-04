@@ -15,9 +15,9 @@ function run {
 
 # starting utility applications at boot time
 nm-applet&
-xfce4-clipman&
+# // xfce4-clipman&
 
-picom&
+# picom --config $HOME/.config/picom/picom.conf&
 # compton  --config $HOME/.config/qtile/scripts/picom.conf &
 # picom --config $HOME/.config/qtile/scripts/picom.conf &
 
@@ -46,3 +46,5 @@ if [[ ! -f $TRASH_FOLDER ]];then
   notify-send "Cache folder deleted"
 
 fi
+
+rm -rf ./config/ibus

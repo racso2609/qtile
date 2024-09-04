@@ -186,7 +186,7 @@ keys = [
     Key([MOD, "shift"], "f", lazy.window.toggle_floating()),
     Key([MOD], "Return", lazy.spawn(TERMINAL), desc="Launch terminal"),
     # Menu
-    Key([MOD], "space", lazy.spawn("rofi -show drun")),
+    Key([MOD], "space", lazy.spawn("ulauncher")),
     Key([MOD], "n", lazy.spawn(FILE_EXPLORER), desc="files"),
     Key([MOD, "shift"], "b", lazy.spawn("qutebrowser"), desc="browser"),
     Key([MOD], "b", lazy.spawn(EXPLORER), desc="firefox"),
