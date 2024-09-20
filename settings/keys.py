@@ -1,33 +1,22 @@
 import os
+
 from libqtile.config import Key
 from libqtile.lazy import lazy
 
-MOD1 = "alt"
-MOD2 = "control"
+from settings.constants import (
+    DEV_EXPLORER,
+    EXPLORER,
+    FILE_EXPLORER,
+    MENU,
+    MENU_THEME,
+    MOD,
+    MOD2,
+    SS_TOOL,
+    TERMINAL,
+)
+from settings.screens import power
+
 home = os.path.expanduser("~")
-
-
-@lazy.function
-def window_to_prev_group(qtile):
-    if qtile.currentWindow is not None:
-        i = qtile.groups.index(qtile.currentGroup)
-        qtile.currentWindow.togroup(qtile.groups[i - 1].name)
-
-
-@lazy.function
-def window_to_next_group(qtile):
-    if qtile.currentWindow is not None:
-        i = qtile.groups.index(qtile.currentGroup)
-        qtile.currentWindow.togroup(qtile.groups[i + 1].name)
-
-
-MOD = "mod4"
-# TERMINAL = guess_terminal()
-TERMINAL = "wezterm"
-# TERMINAL = "alacritty"
-FILE_EXPLORER = "nautilus"
-# EXPLORER = "firefox"
-EXPLORER = "brave"
 
 # TODO: make it more beautifull
 keys = [
@@ -78,7 +67,7 @@ keys = [
     Key([MOD, "control"], "q", lazy.shutdown(), desc="Shutdown Qtile"),
     Key([MOD, "control"], "r", lazy.restart()),
     # QTILE LAYOUT KEYS
-    Key([MOD, "shift"], "n", lazy.layout.normalize()),
+    # Key([MOD, "shift"], "n", lazy.layout.normalize()),
     Key([MOD], "Tab", lazy.next_layout()),
     # CHANGE FOCUS
     Key([MOD], "Up", lazy.layout.up()),
@@ -180,23 +169,36 @@ keys = [
         lazy.layout.shuffle_right(),
         desc="Move window to the right",
     ),
-    # Key([MOD, "shift"], "Down", lazy.layout.shuffle_down(),desc="Move window down"),
-    # Key([MOD, "shift"], "Up", lazy.layout.shuffle_up(), desc="Move window up"),
     # TOGGLE FLOATING LAYOUT
     Key([MOD, "shift"], "f", lazy.window.toggle_floating()),
     Key([MOD], "Return", lazy.spawn(TERMINAL), desc="Launch terminal"),
     # Menu
-    Key([MOD], "space", lazy.spawn("ulauncher")),
+    Key([MOD], "space", lazy.spawn(MENU)),
     Key([MOD], "n", lazy.spawn(FILE_EXPLORER), desc="files"),
-    Key([MOD, "shift"], "b", lazy.spawn("qutebrowser"), desc="browser"),
-    Key([MOD], "b", lazy.spawn(EXPLORER), desc="firefox"),
-    Key([MOD], "s", lazy.spawn("flameshot gui"), desc="firefox"),
-    Key([MOD], "r", lazy.spawn("rofi-theme-selector"), desc="firefox"),
-    Key([MOD], "x", lazy.spawn("arcolinux-logout"), desc="firefox"),
-    Key([MOD], "c", lazy.spawn("dunstctl close"), desc="close last dunst notification"),
     Key(
         [MOD, "shift"],
-        "c",
+        "b",
+        lazy.spawn(DEV_EXPLORER),
+        desc="dev browser normally to test",
+    ),
+    Key([MOD], "b", lazy.spawn(EXPLORER), desc="firefox"),
+    Key([MOD], "s", lazy.spawn(SS_TOOL), desc="screenshot tool"),
+    Key([MOD], "r", lazy.spawn(MENU_THEME), desc="mwnu theme selector"),
+    Key(
+        [MOD],
+        "x",
+        power,
+        desc="logout menu",
+    ),
+    Key(
+        [MOD2],
+        "space",
+        lazy.spawn("dunstctl close"),
+        desc="close last dunst notification",
+    ),
+    Key(
+        [MOD2, "shift"],
+        "space",
         lazy.spawn("dunstctl close-all"),
         desc="close last dunst notification",
     ),

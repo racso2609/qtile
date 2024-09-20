@@ -47,4 +47,6 @@ if [[ ! -f $TRASH_FOLDER ]];then
 
 fi
 
-rm -rf ./config/ibus
+rm -rf ~/.config/ibus
+# setup profil
+autorandr desktop
