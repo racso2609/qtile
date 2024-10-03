@@ -6,6 +6,13 @@ function run {
     $@&
   fi
 }
+function deleteIfExist {
+  if [[ ! -f $1 ]];then
+    notify-send $1
+    rm -r -f  $1
+    notify-send "Folder deleted" $1 
+  fi
+}
 
 # change your keyboard if you need it
 
@@ -28,25 +35,21 @@ nm-applet&
 udiskie&
 telegram-desktop&
 
-USERNAME=`whoami`
+# USERNAME=`whoami`
 notify-send "Welcome $USERNAME"
 
 # set keyboard language
 setxkbmap us
 numlockx on
 
-autorandr -c
 
 TRASH_FOLDER="$HOME/.local/share/Trash"
+IBUS_FOLDER="$HOME/.config/ibus"
 CACHE_FOLDER="$HOME/.cache"
-if [[ ! -f $TRASH_FOLDER ]];then
-  rm -r -f  $TRASH_FOLDER
-  notify-send "Trash folder deleted"
-  rm -rf $CACHE_FOLDER
-  notify-send "Cache folder deleted"
 
-fi
+deleteIfExist $TRASH_FOLDER
+deleteIfExist $IBUS_FOLDER
+deleteIfExist $CACHE_FOLDER
 
-rm -rf ~/.config/ibus
-# setup profil
-autorandr desktop
+autorandr -c
+

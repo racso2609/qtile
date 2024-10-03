@@ -10,7 +10,7 @@ DEV_EXPLORER = "qutebrowser"
 SS_TOOL = "flameshot gui"
 MENU = "ulauncher"
 MENU_THEME = "rofi-theme-selector"
-AUTO_START_SCRIPT_PATH = "~/.config/qtile/autostart.sh"
+AUTO_START_SCRIPT_PATH = "~/.config/qtile/scripts/autostart.sh"
 
 
 floating_types = ["notification", "toolbar", "splash", "dialog", "pop-up"]
@@ -19,16 +19,16 @@ floating_types = ["notification", "toolbar", "splash", "dialog", "pop-up"]
 # FOR QWERTY KEYBOARDS
 
 group_labels = [
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
+    "   ",
+    "   ",
+    "   ",
+    "   ",
+    "   ",
+    "   ",
+    "   ",
+    "   ",
+    "   ",
+    "   ",
 ]
 
 screen_affinity = [

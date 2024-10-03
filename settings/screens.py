@@ -8,6 +8,10 @@ from settings.utils import battery_icon, eww_open
 
 font = "Caskaydia Cove Nerd Font"
 
+SM = 8
+MD = 12
+LG = 16
+
 
 def power():
     eww_open("power_overlay")
@@ -26,21 +30,29 @@ screens = [
                 widget.TextBox(
                     fmt="  ",
                     font=font,
-                    fontsize=20,
+                    fontsize=MD,
                     foreground=get_color("foreground"),
                     mouse_callbacks={"Button1": power},
                 ),
-                widget.Spacer(length=5),
+                widget.Spacer(length=SM),
                 widget.CurrentLayoutIcon(
-                    foreground=get_color("foreground"), fmt="{}", font=font, scale=0.5
+                    foreground=get_color("Magenta"),
+                    fmt="{}",
+                    font=font,
+                    scale=0.3,
+                    fontsize=MD,
                 ),
+                widget.Spacer(length=LG),
+                # widget.Spacer(
+                #     length=SM,
+                #     background=get_color("Magenta"),
+                # ),
                 widget.GroupBox(
-                    visible_groups=screen_affinity[0],
-                    fontsize=24,
-                    borderwidth=3,
+                    # visible_groups=screen_affinity[0],
+                    borderwidth=1,
                     highlight_method="line",
                     # color when have things inside but not active
-                    active=get_color("Gray"),
+                    # active=get_color("Gray"),
                     # color when view is active
                     block_highlight_text_color=get_color("Magenta"),
                     # color when view doesn't have anything
@@ -57,11 +69,39 @@ screens = [
                     urgent_border=get_color("DarkMagenta"),
                     rounded=True,
                     disable_drag=True,
+                    margin=0,
+                    padding_x=5,
+                    # padding=None,
+                    # fontsize=LG,
                 ),
-                widget.Spacer(
-                    length=8,
-                    background=get_color("DarkGray"),
-                ),
+                # widget.Spacer(
+                #     length=SM,
+                #     background=get_color("Green"),
+                # ),
+                # widget.GroupBox(
+                #     visible_groups=screen_affinity[1],
+                #     borderwidth=0,
+                #     highlight_method="line",
+                #     # color when have things inside but not active
+                #     active=get_color("Gray"),
+                #     # color when view is active
+                #     block_highlight_text_color=get_color("Magenta"),
+                #     # color when view doesn't have anything
+                #     inactive=get_color("DarkGray"),
+                #     # background active views
+                #     ## monitor
+                #     this_current_screen_border=get_color("Magenta"),
+                #     this_screen_border=get_color("Magenta"),
+                #     ## laptop
+                #     other_current_screen_border=get_color("Yellow"),
+                #     other_screen_border=get_color("Yellow"),
+                #     ## color with notifications
+                #     # urgent
+                #     urgent_border=get_color("DarkMagenta"),
+                #     rounded=True,
+                #     disable_drag=True,
+                #     margin=0,
+                # ),
                 widget.TextBox(
                     font=font,
                     fmt="  ",
@@ -69,32 +109,20 @@ screens = [
                     background=get_color("DarkGray"),
                     foreground=get_color("Magenta"),
                     mouse_callbacks={"Button1": search},
-                    fontsize=12,
+                    fontsize=MD,
                 ),
+                widget.Spacer(),
                 widget.Spacer(
-                    length=8,
-                    background=get_color("DarkGray"),
-                ),
-                widget.WindowName(
-                    background=get_color("DarkGray"),
-                    format="{name}",
-                    fmt=" {}",
-                    font=font,
-                    foreground=get_color("foreground"),
-                    empty_group_string="Desktop",
-                    fontsize=13,
-                ),
-                widget.Spacer(
-                    length=6,
+                    length=SM,
                     background="#282738",
                 ),
-                widget.Systray(background="#282738", fontsize=2, padding=6),
+                widget.Systray(background="#282738", fontsize=2, padding=SM),
                 widget.Spacer(
-                    length=6,
+                    length=SM,
                     background="#282738",
                 ),
                 widget.Spacer(
-                    length=6,
+                    length=SM,
                     background=get_color("DarkGreen"),
                 ),
                 widget.Net(
@@ -106,7 +134,7 @@ screens = [
                     scroll_fixed_width=True,
                 ),
                 widget.Spacer(
-                    length=6,
+                    length=SM,
                     background=get_color("DarkGreen"),
                 ),
                 #
@@ -116,7 +144,7 @@ screens = [
                     font=font,
                     foreground=get_color("Magenta"),
                     func=battery_icon,
-                    fontsize=13,
+                    fontsize=MD,
                     update_interval=10,
                 ),
                 widget.Spacer(length=-5),
@@ -124,7 +152,7 @@ screens = [
                     font=font,
                     foreground=get_color("Magenta"),
                     format="{percent:2.0%}",
-                    fontsize=13,
+                    fontsize=MD,
                 ),
                 widget.Spacer(
                     length=10,
@@ -133,7 +161,7 @@ screens = [
                 widget.Memory(
                     format="\uf0c7{MemUsed: .0f}{mm}",
                     font=font,
-                    fontsize=13,
+                    fontsize=MD,
                     padding=10,
                     background=get_color("DarkGray"),
                 ),
@@ -146,7 +174,7 @@ screens = [
                     font=font,
                     background=get_color("DarkMagenta"),
                     foreground=get_color("DarkYellow"),
-                    fontsize=13,
+                    fontsize=MD,
                     emoji=True,
                     margin=2,
                 ),
@@ -155,7 +183,7 @@ screens = [
                     font=font,
                     background=get_color("DarkMagenta"),
                     foreground=get_color("DarkYellow"),
-                    fontsize=13,
+                    fontsize=MD,
                 ),
                 widget.Spacer(
                     length=10,
@@ -165,7 +193,7 @@ screens = [
                 widget.TextBox(
                     fmt="  ",
                     background=get_color("Green"),
-                    margin_y=6,
+                    margin_y=SM,
                     margin_x=5,
                     fontsize=20,
                 ),
@@ -176,24 +204,23 @@ screens = [
                     background=get_color("Green"),
                     format="%I:%M %p",
                     font=font,
-                    fontsize=13,
+                    fontsize=MD,
                 ),
                 widget.Spacer(
                     length=10,
                     background=get_color("Green"),
                 ),
             ],
-            30,
+            25,
             background=get_color("background"),
             border_width=[0, 0, 0, 0],
-            margin=[15, 60, 6, 60],
+            margin=[15, 10, 6, 10],
         ),
     ),
     Screen(
         top=bar.Bar(
             [
                 widget.GroupBox(
-                    fontsize=24,
                     borderwidth=3,
                     highlight_method="line",
                     # color when have things inside but not active
@@ -216,7 +243,6 @@ screens = [
                     disable_drag=True,
                     visible_groups=screen_affinity[1],
                 ),
-                widget.Spacer(length=5),
                 widget.WindowName(
                     background=get_color("DarkGray"),
                     format="{name}",
@@ -224,7 +250,7 @@ screens = [
                     font=font,
                     foreground=get_color("foreground"),
                     empty_group_string="Desktop",
-                    fontsize=13,
+                    fontsize=MD,
                 ),
             ],
             30,

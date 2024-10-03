@@ -6,7 +6,7 @@ from libqtile import hook
 
 from settings.constants import AUTO_START_SCRIPT_PATH, floating_types, screen_affinity
 
-group_names = itertools.chain(*screen_affinity)
+group_names = list(itertools.chain(*screen_affinity))
 
 
 @hook.subscribe.client_new
