@@ -51,5 +51,8 @@ deleteIfExist $TRASH_FOLDER
 deleteIfExist $IBUS_FOLDER
 deleteIfExist $CACHE_FOLDER
 
+# greenclip daemon
+
 autorandr -c
+# TODO: made a script to install all this apps
 
