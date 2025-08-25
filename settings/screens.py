@@ -35,7 +35,7 @@ screens = [
                     mouse_callbacks={"Button1": power},
                 ),
                 widget.Spacer(length=SM),
-                widget.CurrentLayoutIcon(
+                widget.CurrentLayout(
                     foreground=get_color("Magenta"),
                     fmt="{}",
                     font=font,

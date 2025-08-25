@@ -6,6 +6,7 @@ function run {
     $@&
   fi
 }
+
 function deleteIfExist {
   if [[ ! -f $1 ]];then
     notify-send $1
@@ -24,16 +25,16 @@ function deleteIfExist {
 nm-applet&
 # // xfce4-clipman&
 
-# picom --config $HOME/.config/picom/picom.conf&
+picom --config $HOME/.config/picom/picom.conf&
 # compton  --config $HOME/.config/qtile/scripts/picom.conf &
 # picom --config $HOME/.config/qtile/scripts/picom.conf &
 
 # starting user applications at boot time
 # think about nitrogen
-# nitrogen --restore &
+nitrogen --restore &
 # run caffeine -a &
 udiskie&
-telegram-desktop&
+# telegram-desktop&
 
 # USERNAME=`whoami`
 notify-send "Welcome $USERNAME"
@@ -53,6 +54,6 @@ deleteIfExist $CACHE_FOLDER
 
 # greenclip daemon
 
-autorandr -c
+autorandr --force pv
 # TODO: made a script to install all this apps
 

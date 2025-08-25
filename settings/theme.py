@@ -8,6 +8,7 @@ def get_color(color):
 
     # Decode the output from bytes to a string
     output_str = output.decode()
-
+    # if output_str:
     # Print the output
     return output_str.strip()
+    # return "#fff"
