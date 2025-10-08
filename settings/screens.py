@@ -258,5 +258,49 @@ screens = [
             border_width=[0, 0, 0, 0],
             # margin=[15, 60, 6, 60],
         ),
+
+    ),
+        Screen(
+        top=bar.Bar(
+            [
+                widget.GroupBox(
+                    borderwidth=3,
+                    highlight_method="line",
+                    # color when have things inside but not active
+                    active=get_color("Gray"),
+                    # color when view is active
+                    block_highlight_text_color=get_color("Magenta"),
+                    # color when view doesn't have anything
+                    inactive=get_color("DarkGray"),
+                    # background active views
+                    # monitor
+                    this_current_screen_border=get_color("Magenta"),
+                    this_screen_border=get_color("Magenta"),
+                    # laptop
+                    other_current_screen_border=get_color("Yellow"),
+                    other_screen_border=get_color("Yellow"),
+                    # color with notifications
+                    # urgent
+                    urgent_border=get_color("DarkMagenta"),
+                    rounded=True,
+                    disable_drag=True,
+                    visible_groups=screen_affinity[2],
+                ),
+                widget.WindowName(
+                    background=get_color("DarkGray"),
+                    format="{name}",
+                    fmt=" {}",
+                    font=font,
+                    foreground=get_color("foreground"),
+                    empty_group_string="Desktop",
+                    fontsize=MD,
+                ),
+            ],
+            30,
+            background=get_color("background"),
+            border_width=[0, 0, 0, 0],
+            # margin=[15, 60, 6, 60],
+        ),
+
     ),
 ]

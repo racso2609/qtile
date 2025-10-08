@@ -15,6 +15,7 @@ function deleteIfExist {
   fi
 }
 
+autorandr -c
 # change your keyboard if you need it
 
 # Some ways to set your wallpaper besides variety or nitrogen
@@ -53,7 +54,4 @@ deleteIfExist $IBUS_FOLDER
 deleteIfExist $CACHE_FOLDER
 
 # greenclip daemon
-
-autorandr --force pv
-# TODO: made a script to install all this apps
 

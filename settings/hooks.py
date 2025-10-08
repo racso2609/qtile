@@ -50,7 +50,7 @@ def assign_app_group(client):
     ]
     d[group_names[2]] = []
     d[group_names[3]] = [
-        "telegram-desktop",
+        "Telegram",
         "slack",
         "Slack",
     ]
@@ -59,18 +59,18 @@ def assign_app_group(client):
         "vlc",
         "Mpv",
         "mpv",
-        "Thunar",
-        "Nemo",
-        "Caja",
-        "Nautilus",
-        "org.gnome.Nautilus",
+        # "Thunar",
+        # "Nemo",
+        # "Caja",
+        # "Nautilus",
+        # "org.gnome.Nautilus",
         "Pcmanfm",
         "Pcmanfm-qt",
-        "thunar",
-        "nemo",
-        "caja",
-        "nautilus",
-        "org.gnome.nautilus",
+        # "thunar",
+        # "nemo",
+        # "caja",
+        # "nautilus",
+        # "org.gnome.nautilus",
         "pcmanfm",
         "pcmanfm-qt",
     ]
