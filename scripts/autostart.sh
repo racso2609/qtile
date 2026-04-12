@@ -45,6 +45,7 @@ notify-send "Welcome $USERNAME"
 # set keyboard language
 setxkbmap us
 numlockx on
+flameshot&
 
 
 TRASH_FOLDER="$HOME/.local/share/Trash"
