@@ -100,8 +100,9 @@ screens = [
                 ),
                 widget.Spacer(),
                 widget.Systray(
-                    padding=8,
-                    icon_size=16,
+                    padding=10,
+                    icon_size=20,
+                    background=bg_transparent,
                 ),
                 simple_separator(15),
                 widget.Net(
@@ -146,7 +147,7 @@ screens = [
                     font=font,
                     fontsize=MD,
                     foreground=get_color("Green"),
-                    format="{char} {percent:2.0%}",
+                    format="{char}    {percent:2.0%}",
                     charge_char="",
                     discharge_char="",
                     empty_char="",
