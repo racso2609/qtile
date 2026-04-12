@@ -1,26 +1,26 @@
 from libqtile import bar, qtile, widget
 from libqtile.config import Screen
 
-from settings.constants import screen_affinity
+from settings.constants import screen_affinity, TERMINAL
 from settings.keys import MENU
 from settings.theme import get_color
 from settings.utils import battery_icon, eww_open, execute_command
 from datetime import datetime
 
-font = "Caskaydia Cove Nerd Font"
+font = "JetBrainsMono Nerd Font"
 
-SM = 8
+SM = 6
 MD = 12
-LG = 16
+LG = 14
 
 
-def power(qtile):
+from libqtile.lazy import lazy
+
+
+# --- Callbacks ---
+def power():
     eww_open("power_overlay")
     eww_open("power_menu")
-
-
-def search():
-    qtile.cmd_spawn(MENU)
 
 
 def chang_clock_format():
@@ -28,296 +28,197 @@ def chang_clock_format():
     execute_command("notify-send " + str(actual_date))
 
 
+# --- Transparent Background ---
+# Append hex alpha 'CC' (80% opacity) to the theme's background color
+# E.g. "#282c34" -> "#282c34CC"
+bg_transparent = get_color("background")
+if len(bg_transparent) == 7:
+    bg_transparent += "CC"
+
+# --- Reusable Widgets ---
 clock_widget = [
-    widget.TextBox(
-        fmt="  ",
-        background=get_color("Green"),
-        margin_y=SM,
-        margin_x=5,
-        fontsize=20,
-        mouse_callbacks={"Button1": chang_clock_format},
-    ),
-    widget.Spacer(
-        length=-5,
-        mouse_callbacks={"Button1": chang_clock_format},
-    ),
     widget.Clock(
-        background=get_color("Green"),
-        format="%I:%M %p",
+        format="  %H:%M",
         font=font,
         fontsize=MD,
-        mouse_callbacks={"Button1": chang_clock_format},
-    ),
-    widget.Spacer(
-        length=10,
-        background=get_color("Green"),
+        foreground=get_color("Magenta"),
+        padding=8,
         mouse_callbacks={"Button1": chang_clock_format},
     ),
 ]
 
 
+def simple_separator(length=12):
+    """Transparent spacer for clean breathing room"""
+    return widget.Spacer(
+        length=length,
+        background=bg_transparent,
+    )
+
+
+# --- Screens ---
 screens = [
     Screen(
         top=bar.Bar(
             [
-                widget.Spacer(length=5),
+                widget.Spacer(length=10),
                 widget.TextBox(
-                    fmt="  ",
+                    text="⏻",
                     font=font,
-                    fontsize=MD,
-                    foreground=get_color("foreground"),
+                    fontsize=16,
+                    foreground=get_color("Red"),
                     mouse_callbacks={"Button1": power},
+                    padding=4,
                 ),
-                widget.Spacer(length=SM),
-                widget.CurrentLayout(
-                    foreground=get_color("Magenta"),
-                    fmt="{}",
-                    font=font,
-                    scale=0.3,
-                    fontsize=MD,
-                ),
-                widget.Spacer(length=LG),
-                # widget.Spacer(
-                #     length=SM,
-                #     background=get_color("Magenta"),
-                # ),
+                simple_separator(15),
                 widget.GroupBox(
-                    # visible_groups=screen_affinity[0],
-                    borderwidth=1,
-                    highlight_method="line",
-                    # color when have things inside but not active
-                    # active=get_color("Gray"),
-                    # color when view is active
-                    block_highlight_text_color=get_color("Magenta"),
-                    # color when view doesn't have anything
+                    font=font,
+                    fontsize=LG,
+                    margin_y=3,
+                    margin_x=0,
+                    padding_y=5,
+                    padding_x=4,
+                    borderwidth=0,
                     inactive=get_color("DarkGray"),
-                    # background active views
-                    ## monitor
+                    active=get_color("foreground"),
+                    rounded=False,
+                    highlight_method="text",
                     this_current_screen_border=get_color("Magenta"),
                     this_screen_border=get_color("Magenta"),
-                    ## laptop
                     other_current_screen_border=get_color("Yellow"),
                     other_screen_border=get_color("Yellow"),
-                    ## color with notifications
-                    # urgent
-                    urgent_border=get_color("DarkMagenta"),
-                    rounded=True,
-                    disable_drag=True,
-                    margin=0,
-                    padding_x=5,
-                    # padding=None,
-                    # fontsize=LG,
+                    urgent_border=get_color("Red"),
                 ),
-                # widget.Spacer(
-                #     length=SM,
-                #     background=get_color("Green"),
-                # ),
-                # widget.GroupBox(
-                #     visible_groups=screen_affinity[1],
-                #     borderwidth=0,
-                #     highlight_method="line",
-                #     # color when have things inside but not active
-                #     active=get_color("Gray"),
-                #     # color when view is active
-                #     block_highlight_text_color=get_color("Magenta"),
-                #     # color when view doesn't have anything
-                #     inactive=get_color("DarkGray"),
-                #     # background active views
-                #     ## monitor
-                #     this_current_screen_border=get_color("Magenta"),
-                #     this_screen_border=get_color("Magenta"),
-                #     ## laptop
-                #     other_current_screen_border=get_color("Yellow"),
-                #     other_screen_border=get_color("Yellow"),
-                #     ## color with notifications
-                #     # urgent
-                #     urgent_border=get_color("DarkMagenta"),
-                #     rounded=True,
-                #     disable_drag=True,
-                #     margin=0,
-                # ),
-                widget.TextBox(
+                simple_separator(20),
+                widget.WindowName(
+                    format="{name}",
                     font=font,
-                    fmt="  ",
-                    margin=3,
-                    background=get_color("DarkGray"),
-                    foreground=get_color("Magenta"),
-                    mouse_callbacks={"Button1": search},
                     fontsize=MD,
+                    foreground=get_color("Gray"),
+                    empty_group_string="",
+                    max_chars=60,
                 ),
                 widget.Spacer(),
-                widget.Spacer(
-                    length=SM,
-                    background=get_color("DarkGreen"),
-                ),
-                widget.Systray(
-                    background=get_color("DarkGreen"), fontsize=2, padding=SM
-                ),
-                widget.Spacer(
-                    length=SM,
-                    background=get_color("DarkGreen"),
-                ),
-                widget.Spacer(
-                    length=SM,
-                    background=get_color("DarkGreen"),
-                ),
+                #  widget.Systray(
+                #      padding=8,
+                #      icon_size=16,
+                #  ),
+                simple_separator(15),
                 widget.Net(
-                    format=" {up}   {down} ",
-                    background=get_color("DarkGreen"),
-                    foreground=get_color("Gray"),
+                    interface="all",
+                    format="    {down}",
                     font=font,
-                    prefix="k",
-                    scroll_fixed_width=True,
-                ),
-                widget.Spacer(
-                    length=SM,
-                    background=get_color("DarkGreen"),
-                ),
-                #
-                # Battery
-                widget.GenPollText(
-                    fmt="{}",
-                    font=font,
-                    foreground=get_color("Magenta"),
-                    func=battery_icon,
                     fontsize=MD,
-                    update_interval=10,
+                    foreground=get_color("Cyan"),
+                    mouse_callbacks={"Button1": lazy.spawn(f"{TERMINAL} -e nmtui-go")},
                 ),
-                widget.Spacer(length=-5),
+                simple_separator(15),
+                widget.CPU(
+                    format="    {load_percent}%",
+                    font=font,
+                    fontsize=MD,
+                    foreground=get_color("Red"),
+                    mouse_callbacks={"Button1": lazy.spawn(f"{TERMINAL} -e htop")},
+                ),
+                simple_separator(15),
+                widget.Memory(
+                    format="  {MemUsed: .0f}G",
+                    font=font,
+                    fontsize=MD,
+                    foreground=get_color("Yellow"),
+                    measure_mem="G",
+                    mouse_callbacks={"Button1": lazy.spawn(f"{TERMINAL} -e htop")},
+                ),
+                simple_separator(15),
+                widget.Volume(
+                    font=font,
+                    fontsize=MD,
+                    foreground=get_color("Blue"),
+                    emoji=False,
+                    volume_app="pulseaudio",
+                    volume_down_char="",
+                    volume_up_char="",
+                    mute_char="",
+                    mouse_callbacks={"Button1": lazy.spawn("pavucontrol")},
+                ),
+                simple_separator(15),
                 widget.Battery(
                     font=font,
-                    foreground=get_color("Magenta"),
-                    format="{percent:2.0%}",
                     fontsize=MD,
+                    foreground=get_color("Green"),
+                    format="{char} {percent:2.0%}",
+                    charge_char="",
+                    discharge_char="",
+                    empty_char="",
+                    full_char="",
+                    unknown_char="",
+                    show_short_text=False,
                 ),
-                widget.Spacer(
-                    length=10,
-                ),
-                # memory
-                widget.Memory(
-                    format="\uf0c7{MemUsed: .0f}{mm}",
-                    font=font,
-                    fontsize=MD,
-                    padding=10,
-                    background=get_color("DarkGray"),
-                ),
-                # Volume
-                widget.Spacer(
-                    length=10,
-                    background=get_color("DarkMagenta"),
-                ),
-                widget.Volume(
-                    font=font,
-                    background=get_color("DarkMagenta"),
-                    foreground=get_color("DarkYellow"),
-                    fontsize=MD,
-                    emoji=True,
-                    margin=2,
-                ),
-                widget.Volume(
-                    margin=3,
-                    font=font,
-                    background=get_color("DarkMagenta"),
-                    foreground=get_color("DarkYellow"),
-                    fontsize=MD,
-                ),
-                widget.Spacer(
-                    length=10,
-                    background=get_color("DarkMagenta"),
-                ),
-                # Clock
+                simple_separator(15),
                 *clock_widget,
             ],
-            25,
-            background=get_color("background"),
+            30,
+            background=bg_transparent,
             border_width=[0, 0, 0, 0],
-            margin=[15, 10, 6, 10],
+            margin=[8, 12, 4, 12],
         ),
     ),
     Screen(
         top=bar.Bar(
             [
+                widget.Spacer(length=10),
                 widget.GroupBox(
-                    borderwidth=3,
-                    highlight_method="line",
-                    # color when have things inside but not active
-                    active=get_color("Gray"),
-                    # color when view is active
-                    block_highlight_text_color=get_color("Magenta"),
-                    # color when view doesn't have anything
-                    inactive=get_color("DarkGray"),
-                    # background active views
-                    # monitor
-                    this_current_screen_border=get_color("Magenta"),
-                    this_screen_border=get_color("Magenta"),
-                    # laptop
-                    other_current_screen_border=get_color("Yellow"),
-                    other_screen_border=get_color("Yellow"),
-                    # color with notifications
-                    # urgent
-                    urgent_border=get_color("DarkMagenta"),
-                    rounded=True,
-                    disable_drag=True,
-                    visible_groups=screen_affinity[1],
-                ),
-                widget.WindowName(
-                    background=get_color("DarkGray"),
-                    format="{name}",
-                    fmt=" {}",
                     font=font,
-                    foreground=get_color("foreground"),
-                    empty_group_string="Desktop",
-                    fontsize=MD,
+                    fontsize=LG,
+                    margin_y=3,
+                    margin_x=0,
+                    padding_y=5,
+                    padding_x=4,
+                    borderwidth=0,
+                    inactive=get_color("DarkGray"),
+                    active=get_color("foreground"),
+                    highlight_method="text",
+                    this_current_screen_border=get_color("Magenta"),
+                    visible_groups=(
+                        screen_affinity[1] if len(screen_affinity) > 1 else []
+                    ),
                 ),
+                widget.Spacer(),
                 *clock_widget,
             ],
             30,
-            background=get_color("background"),
+            background=bg_transparent,
             border_width=[0, 0, 0, 0],
-            # margin=[15, 60, 6, 60],
+            margin=[8, 12, 4, 12],
         ),
     ),
     Screen(
         top=bar.Bar(
             [
+                widget.Spacer(length=10),
                 widget.GroupBox(
-                    borderwidth=3,
-                    highlight_method="line",
-                    # color when have things inside but not active
-                    active=get_color("Gray"),
-                    # color when view is active
-                    block_highlight_text_color=get_color("Magenta"),
-                    # color when view doesn't have anything
-                    inactive=get_color("DarkGray"),
-                    # background active views
-                    # monitor
-                    this_current_screen_border=get_color("Magenta"),
-                    this_screen_border=get_color("Magenta"),
-                    # laptop
-                    other_current_screen_border=get_color("Yellow"),
-                    other_screen_border=get_color("Yellow"),
-                    # color with notifications
-                    # urgent
-                    urgent_border=get_color("DarkMagenta"),
-                    rounded=True,
-                    disable_drag=True,
-                    visible_groups=screen_affinity[2],
-                ),
-                widget.WindowName(
-                    background=get_color("DarkGray"),
-                    format="{name}",
-                    fmt=" {}",
                     font=font,
-                    foreground=get_color("foreground"),
-                    empty_group_string="Desktop",
-                    fontsize=MD,
+                    fontsize=LG,
+                    margin_y=3,
+                    margin_x=0,
+                    padding_y=5,
+                    padding_x=4,
+                    borderwidth=0,
+                    inactive=get_color("DarkGray"),
+                    active=get_color("foreground"),
+                    highlight_method="text",
+                    this_current_screen_border=get_color("Magenta"),
+                    visible_groups=(
+                        screen_affinity[2] if len(screen_affinity) > 2 else []
+                    ),
                 ),
+                widget.Spacer(),
                 *clock_widget,
             ],
             30,
-            background=get_color("background"),
+            background=bg_transparent,
             border_width=[0, 0, 0, 0],
-            # margin=[15, 60, 6, 60],
+            margin=[8, 12, 4, 12],
         ),
     ),
 ]
