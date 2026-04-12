@@ -4,10 +4,12 @@ MOD2 = "control"
 
 TERMINAL = "wezterm"
 FILE_EXPLORER = "nautilus"
-EXPLORER = "brave --ozone-platform-hint=auto"
+EXPLORER = "env -u WAYLAND_DISPLAY XDG_SESSION_TYPE=x11 brave --ozone-platform-hint=x11"
 DEV_EXPLORER = "qutebrowser"
 
-SS_TOOL = "flameshot gui"
+SS_TOOL = (
+    "env -u WAYLAND_DISPLAY XDG_SESSION_TYPE=x11 QT_QPA_PLATFORM=xcb flameshot gui"
+)
 MENU = "ulauncher"
 MENU_THEME = "rofi-theme-selector"
 AUTO_START_SCRIPT_PATH = "~/.config/qtile/scripts/autostart.sh"

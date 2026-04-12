@@ -1,6 +1,6 @@
 #!/bin/bash
 
-export XDG_SESSION_TYPE=x11
+# export XDG_SESSION_TYPE=x11
 
 function run {
   if ! pgrep $1 ;
@@ -22,7 +22,7 @@ autorandr -c
 
 # Some ways to set your wallpaper besides variety or nitrogen
 # start the conky to learn the shortcuts
-(conky -c $HOME/.config/qtile/scripts/system-overview)&
+# (conky -c $HOME/.config/qtile/scripts/system-overview)&
 
 # starting utility applications at boot time
 nm-applet&

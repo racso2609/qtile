@@ -99,10 +99,10 @@ screens = [
                     max_chars=60,
                 ),
                 widget.Spacer(),
-                #  widget.Systray(
-                #      padding=8,
-                #      icon_size=16,
-                #  ),
+                widget.Systray(
+                    padding=8,
+                    icon_size=16,
+                ),
                 simple_separator(15),
                 widget.Net(
                     interface="all",
