@@ -4,7 +4,8 @@ from libqtile.config import Screen
 from settings.constants import screen_affinity
 from settings.keys import MENU
 from settings.theme import get_color
-from settings.utils import battery_icon, eww_open
+from settings.utils import battery_icon, eww_open, execute_command
+from datetime import datetime
 
 font = "Caskaydia Cove Nerd Font"
 
@@ -13,13 +14,46 @@ MD = 12
 LG = 16
 
 
-def power():
+def power(qtile):
     eww_open("power_overlay")
     eww_open("power_menu")
 
 
 def search():
     qtile.cmd_spawn(MENU)
+
+
+def chang_clock_format():
+    actual_date = datetime.today().strftime("%d-%m-%Y")
+    execute_command("notify-send " + str(actual_date))
+
+
+clock_widget = [
+    widget.TextBox(
+        fmt="  ",
+        background=get_color("Green"),
+        margin_y=SM,
+        margin_x=5,
+        fontsize=20,
+        mouse_callbacks={"Button1": chang_clock_format},
+    ),
+    widget.Spacer(
+        length=-5,
+        mouse_callbacks={"Button1": chang_clock_format},
+    ),
+    widget.Clock(
+        background=get_color("Green"),
+        format="%I:%M %p",
+        font=font,
+        fontsize=MD,
+        mouse_callbacks={"Button1": chang_clock_format},
+    ),
+    widget.Spacer(
+        length=10,
+        background=get_color("Green"),
+        mouse_callbacks={"Button1": chang_clock_format},
+    ),
+]
 
 
 screens = [
@@ -114,12 +148,14 @@ screens = [
                 widget.Spacer(),
                 widget.Spacer(
                     length=SM,
-                    background="#282738",
+                    background=get_color("DarkGreen"),
                 ),
-                widget.Systray(background="#282738", fontsize=2, padding=SM),
+                widget.Systray(
+                    background=get_color("DarkGreen"), fontsize=2, padding=SM
+                ),
                 widget.Spacer(
                     length=SM,
-                    background="#282738",
+                    background=get_color("DarkGreen"),
                 ),
                 widget.Spacer(
                     length=SM,
@@ -190,26 +226,7 @@ screens = [
                     background=get_color("DarkMagenta"),
                 ),
                 # Clock
-                widget.TextBox(
-                    fmt="  ",
-                    background=get_color("Green"),
-                    margin_y=SM,
-                    margin_x=5,
-                    fontsize=20,
-                ),
-                widget.Spacer(
-                    length=-5,
-                ),
-                widget.Clock(
-                    background=get_color("Green"),
-                    format="%I:%M %p",
-                    font=font,
-                    fontsize=MD,
-                ),
-                widget.Spacer(
-                    length=10,
-                    background=get_color("Green"),
-                ),
+                *clock_widget,
             ],
             25,
             background=get_color("background"),
@@ -252,15 +269,15 @@ screens = [
                     empty_group_string="Desktop",
                     fontsize=MD,
                 ),
+                *clock_widget,
             ],
             30,
             background=get_color("background"),
             border_width=[0, 0, 0, 0],
             # margin=[15, 60, 6, 60],
         ),
-
     ),
-        Screen(
+    Screen(
         top=bar.Bar(
             [
                 widget.GroupBox(
@@ -295,12 +312,12 @@ screens = [
                     empty_group_string="Desktop",
                     fontsize=MD,
                 ),
+                *clock_widget,
             ],
             30,
             background=get_color("background"),
             border_width=[0, 0, 0, 0],
             # margin=[15, 60, 6, 60],
         ),
-
     ),
 ]

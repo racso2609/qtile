@@ -1,5 +1,7 @@
 #!/bin/bash
 
+export XDG_SESSION_TYPE=x11
+
 function run {
   if ! pgrep $1 ;
   then

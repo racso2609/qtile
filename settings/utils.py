@@ -35,3 +35,8 @@ def battery_icon():
         icon += "  "
 
     return icon
+
+
+def execute_command(command):
+    output = subprocess.check_output(command, shell=True)
+    return output.decode().strip()

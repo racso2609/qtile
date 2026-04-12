@@ -1,28 +1,27 @@
 from libqtile import layout
 from libqtile.config import Match
 
+from settings.theme import get_color
+
 
 def init_layout_theme():
     return {
         "margin": 5,
         "border_width": 2,
-        "border_focus": "#430876",
-        "border_normal": "#4c566a",
+        "border_focus": get_color("Blue"),
+        "border_normal": get_color("DarkGray"),
     }
 
 
 layout_theme = init_layout_theme()
 
 layouts = [
-    # layout.MonadTall(margin=8, border_width=2, border_focus="#5e81ac", border_normal="#4c566a"),
     layout.Columns(
-        margin=8, border_width=2, border_focus="#5e81ac", border_normal="#4c566a"
+        margin=8,
+        border_width=2,
+        border_focus=get_color("Blue"),
+        border_normal=get_color("DarkGray"),
     ),
-    # layout.MonadWide(margin=8, border_width=2, border_focus="#5e81ac", border_normal="#4c566a"),
-    # layout.Matrix(**layout_theme),
-    # layout.Bsp(**layout_theme),
-    # layout.RatioTile(**layout_theme),
-    # layout.Floating(**layout_theme),
     layout.Max(**layout_theme),
 ]
 

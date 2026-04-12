@@ -115,3 +115,6 @@ def set_floating(window):
         or window.window.get_wm_window_role() in floating_types
     ):
         window.floating = True
+
+    if window.name.startswith("dashboard_menu") or window.name.startswith("music_menu") or window.name.startswith("power_menu"):
+        window.floating = True

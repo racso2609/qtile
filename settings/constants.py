@@ -4,7 +4,7 @@ MOD2 = "control"
 
 TERMINAL = "wezterm"
 FILE_EXPLORER = "nautilus"
-EXPLORER = "brave"
+EXPLORER = "brave --ozone-platform-hint=auto"
 DEV_EXPLORER = "qutebrowser"
 
 SS_TOOL = "flameshot gui"
@@ -33,6 +33,6 @@ group_labels = [
 
 screen_affinity = [
     ["1", "2", "3"],
-    ["4","5", "6"],
-    [ "7", "8", "9", "0"],
+    ["4", "5", "6"],
+    ["7", "8", "9", "0"],
 ]
