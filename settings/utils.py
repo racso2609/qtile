@@ -40,3 +40,41 @@ def battery_icon():
 def execute_command(command):
     output = subprocess.check_output(command, shell=True)
     return output.decode().strip()
+
+
+def get_graphics_mode():
+    """Get current graphics mode from envycontrol"""
+    try:
+        output = subprocess.check_output(
+            ["envycontrol", "-q"], stderr=subprocess.STDOUT
+        )
+        mode = output.decode().strip()
+
+        return mode.capitalize() if mode else "Unknown"
+        # Return a shortened version for display
+        # if mode == "integrated":
+        #     return "Integrated"
+        # elif mode == "hybrid":
+        #     return "Hybrid"
+        # elif mode == "nvidia":
+        #     return "NVIDIA"
+        # else:
+        #     return mode.capitalize() if mode else "Unknown"
+    except subprocess.CalledProcessError as e:
+        return f"Error: {e.returncode}"
+    except FileNotFoundError:
+        return "Not Installed"
+    except Exception as e:
+        return f"Exception: {str(e)}"
+
+
+def debug_widget():
+    """Debug widget function"""
+    try:
+        result = get_graphics_mode()
+        print(
+            f"DEBUG: get_graphics_mode returned: {repr(result)}"
+        )  # This won't be visible but helps us know it's called
+        return f"[{result}]"
+    except Exception as e:
+        return f"ERR: {str(e)}"

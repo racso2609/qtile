@@ -4,7 +4,7 @@ from libqtile.config import Screen
 from settings.constants import screen_affinity, TERMINAL
 from settings.keys import MENU
 from settings.theme import get_color
-from settings.utils import battery_icon, eww_open, execute_command
+from settings.utils import battery_icon, eww_open, execute_command, get_graphics_mode
 from datetime import datetime
 
 font = "JetBrainsMono Nerd Font"
@@ -154,6 +154,22 @@ screens = [
                     full_char="",
                     unknown_char="",
                     show_short_text=False,
+                ),
+                simple_separator(15),
+                widget.TextBox(
+                    text="󰍹",
+                    font=font,
+                    fontsize=MD,
+                    foreground=get_color("Blue"),
+                    padding=5,
+                ),
+                widget.GenPollText(
+                    font=font,
+                    fontsize=MD,
+                    foreground=get_color("Blue"),
+                    padding=5,
+                    update_interval=10,
+                    func=get_graphics_mode,
                 ),
                 simple_separator(15),
                 *clock_widget,
