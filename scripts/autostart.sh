@@ -56,5 +56,9 @@ deleteIfExist $TRASH_FOLDER
 deleteIfExist $IBUS_FOLDER
 deleteIfExist $CACHE_FOLDER
 
+# Script para bajar Hz cuando estás en batería
+xrandr --output edp-1 --mode 1920x1200 --rate 60.00
+notify-send "Safe mode" "Hz reduced to 60 to save battery"
+
 # greenclip daemon
 

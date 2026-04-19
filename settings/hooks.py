@@ -3,8 +3,27 @@ import os
 import subprocess
 
 from libqtile import hook
+from settings.utils import execute_command
 
 from settings.constants import AUTO_START_SCRIPT_PATH, floating_types, screen_affinity
+
+battery_notified_levels = {20, 10, 5}
+
+_checked_levels = {20: False, 10: False, 5: False}
+
+
+def check_battery_notification(battery, qtile):
+    status = battery.get()
+    if status is None:
+        return
+
+    percent = int(status.percent * 100)
+
+    if status.state == "discharging":
+        for level in battery_notified_levels:
+            if percent <= level and not _checked_levels[level]:
+                execute_command(f"notify-send 'Battery Low' '{level}% remaining'")
+                _checked_levels[level] = True
 
 group_names = list(itertools.chain(*screen_affinity))
 

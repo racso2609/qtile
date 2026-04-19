@@ -5,6 +5,7 @@ from settings.constants import screen_affinity, TERMINAL
 from settings.keys import MENU
 from settings.theme import get_color
 from settings.utils import battery_icon, eww_open, execute_command, get_graphics_mode
+from settings.hooks import check_battery_notification
 from datetime import datetime
 
 font = "JetBrainsMono Nerd Font"
@@ -154,6 +155,7 @@ screens = [
                     full_char="",
                     unknown_char="",
                     show_short_text=False,
+                    notify_battery=check_battery_notification,
                 ),
                 simple_separator(15),
                 widget.TextBox(
